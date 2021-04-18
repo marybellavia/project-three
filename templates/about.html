@@ -1,0 +1,106 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron bg-success" style="text-align: center">
+    <h1 class="text-light">About</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12 justify-content-center text-center">
+        <h2>The Data</h2>
+        <hr class="my-4">
+        <p class="lead">All models and maps were created using open source data provided by <a class="text-primary"
+                href="https://www.zillow.com/research/data/">Zillow</a>. <br>The precise
+            meaning of house and rental
+            index as described by Zillow about their data is listed below.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 justify-content-center">
+        <hr class="my-4">
+        <h5>Zillow defines the Zillow Home Value Index (ZHVI) as:</h5>
+        <blockquote class="blockquote">
+            <p class="mb-0">"A smoothed, seasonally adjusted measure of the typical home value and market
+                changes
+                across a given region and housing type. It reflects the typical value for homes in the 35th to
+                65th percentile range. The raw version of that mid-tier ZHVI time series is also available.</p>
+            <p>ZHVI represents the “typical” home value for a region. When referring to the ZHVI dollar amount,
+                it should be designated as the “typical home value for the region.” An earlier version of ZHVI
+                represented a median value, but this is no longer the case. Wording should be changed to reflect
+                the new ZHVI, and should be “typical home value” — it is NOT the “median home value”."</p>
+            <footer class="blockquote-footer"><cite title="Source Title"><a
+                        href="https://www.zillow.com/research/data/">Zillow Research Data</a></cite></footer>
+        </blockquote>
+    </div>
+    <div class="col-md-6 justify-content-center">
+        <hr class="my-4">
+        <h5>Zillow defines the Zillow Observed Rent Index (ZORI) as:</h5>
+        <blockquote class="blockquote">
+            <p class="mb-0">"A smoothed measure of the typical observed market rate rent across a given region.
+                ZORI is a repeat-rent index that is weighted to the rental housing stock to ensure
+                representativeness across the entire market, not just those homes currently listed for-rent. The
+                index is dollar-denominated by computing the mean of listed rents that fall into the 40th to
+                60th percentile range for all homes and apartments in a given region, which is once again
+                weighted to reflect the rental housing stock."</p>
+            <footer class="blockquote-footer"><cite title="Source Title"><a
+                        href="https://www.zillow.com/research/data/">Zillow Research Data</a></cite></footer>
+        </blockquote>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 justify-content-center">
+        <h2 class="text-center">The Data Analysts</h2>
+        <hr class="my-4">
+    </div>
+    <div class="col-md-3 justify-content-center">
+        <div class="card text-light bg-dark mb-3 text-center" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title">Mary Bellavia</h4>
+                <h6 class="card-subtitle text-muted">Data Analyst, Developer, Scrum Master, Agile Coach</h6>
+                <br>
+                <p class="card-text text-center"><a class="text-success"
+                        href="https://www.linkedin.com/in/mary-bellavia-28311b2a">LINKEDIN</a><br><a class="text-success"
+                        href="https://github.com/marybellavia">GITHUB</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 justify-content-center">
+        <div class="card text-light bg-dark mb-3 text-center" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title">Garrett DeBlois</h4>
+                <h6 class="card-subtitle text-muted">Quality Assurance Engineer, Data Analyst</h6>
+                <br>
+                <p class="card-text text-center"><a class="text-success"
+                        href="https://www.linkedin.com/in/garrett-deblois/">LINKEDIN</a><br><a class="text-success"
+                        href="https://github.com/GND95">GITHUB</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 justify-content-center">
+        <div class="card text-light bg-dark mb-3 text-center" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title">Eric Evans</h4>
+                <h6 class="card-subtitle text-muted">AMAZING TITLE</h6>
+                <br>
+                <p class="card-text text-center"><a class="text-success"
+                        href="https://www.linkedin.com/in/garrett-deblois/">LINKEDIN</a><br><a class="text-success"
+                        href="https://github.com/GND95">GITHUB</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 justify-content-center">
+        <div class="card text-light bg-dark mb-3 text-center" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title">Irene Zou</h4>
+                <h6 class="card-subtitle text-muted">Finance Undergraduate</h6>
+                <br>
+                <p class="card-text text-center"><a class="text-success"
+                        href="https://www.linkedin.com/in/irene--zou/">LINKEDIN</a><br><a class="text-success"
+                        href="https://github.com/Irene-zou">GITHUB</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
