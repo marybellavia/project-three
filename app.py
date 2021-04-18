@@ -50,7 +50,7 @@ session = Session(bind=engine)
 @app.route("/")
 def home():
     # Return template and data
-    return render_template("index.html", title="Rent & House Index Analysis", )
+    return render_template("index.html", title="Loan Helper", )
 @app.route("/about")
 def about():
     # Return template and data
