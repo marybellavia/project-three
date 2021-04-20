@@ -34,14 +34,14 @@ connect_args={'check_same_thread': False}
 
 conn = engine.connect()
 
-house_df = pandas.read_csv("static/data/house_filtered.csv")
-house_df.to_sql("House", conn, if_exists='replace', index=False)
+# house_df = pandas.read_csv("static/data/house_filtered.csv")
+# house_df.to_sql("House", conn, if_exists='replace', index=False)
 
-rent_df = pandas.read_csv("static/data/rent_cleaned.csv")
-rent_df.to_sql("Rent", conn, if_exists='replace', index=False)
+# rent_df = pandas.read_csv("static/data/rent_cleaned.csv")
+# rent_df.to_sql("Rent", conn, if_exists='replace', index=False)
 
-Rent = create_rent(db)
-House = create_house(db)
+# Rent = create_rent(db)
+# House = create_house(db)
 
 from sqlalchemy.orm import Session
 session = Session(bind=engine)
