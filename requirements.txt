@@ -53,7 +53,6 @@ Markdown
 MarkupSafe==1.1.1
 matplotlib 
 mistune==0.8.4
-multidict 
 nb-conda-kernels
 nbclient 
 nbconvert 
