@@ -26,12 +26,9 @@ def about():
 @app.route("/prediction", methods=['POST', 'GET'])
 def prediction():
     # Return template and data
-    #TODO take user input from Form as a Post request and typecast it to the proper data structure
-    if request.method == 'POST':
-        # try:
-        #     df = pd.DataFrame({
-        #     })
 
+    #take user input from Form as a Post request and typecast it to the proper data structure
+    if request.method == 'POST':
         gender = int(request.form['gender'])
         married = int(request.form['married'])
         dependents = int(request.form['dependents'])
@@ -43,6 +40,20 @@ def prediction():
         loan_amount_term = int(request.form['loan_amount_term'])
         credit_history = int(request.form['credit_history'])
         property_area = int(request.form['property_area'])
+
+        #put the variables into a pandas dataframe
+        df = pd.DataFrame({
+            'Gender': gender,
+            'Married': married,
+            'Dependents': dependents,
+            'Self_Employed': self_employed,
+            'ApplicantIncome': applicant_income,
+            'CoapplicantIncome': coapplicant_income,
+            'LoanAmount': loan_amount,
+            'Loan_Amount_Term': loan_amount_term,
+            'Credit_History': credit_history,
+            'Property_Area': property_area
+        })
 
     #TODO add all the data transformation code that formats the data before the algo uses it
     #TODO run the user's data through the ML algo to generate a prediction
