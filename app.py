@@ -28,22 +28,21 @@ def prediction():
     # Return template and data
     #TODO take user input from Form as a Post request and typecast it to the proper data structure
     if request.method == 'POST':
-        try:
-            df = pd.DataFrame({
+        # try:
+        #     df = pd.DataFrame({
+        #     })
 
-
-            })
-            gender = int(request.form['gender'])
-            married = int(request.form['married'])
-            dependents = int(request.form['dependents'])
-            education = int(request.form['education'])
-            self_employed = int(request.form['self_employed'])
-            applicant_income = int(request.form['applicant_income'])
-            coapplicant_income = int(request.form['coapplicant_income'])
-            loan_amount = int(request.form['loan_amount'])
-            loan_amount_term = int(request.form['loan_amount_term'])
-            credit_history = int(request.form['credit_history'])
-            property_area = int(request.form['property_area'])
+        gender = int(request.form['gender'])
+        married = int(request.form['married'])
+        dependents = int(request.form['dependents'])
+        education = int(request.form['education'])
+        self_employed = int(request.form['self_employed'])
+        applicant_income = int(request.form['applicant_income'])
+        coapplicant_income = int(request.form['coapplicant_income'])
+        loan_amount = int(request.form['loan_amount'])
+        loan_amount_term = int(request.form['loan_amount_term'])
+        credit_history = int(request.form['credit_history'])
+        property_area = int(request.form['property_area'])
 
     #TODO add all the data transformation code that formats the data before the algo uses it
     #TODO run the user's data through the ML algo to generate a prediction
