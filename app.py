@@ -1,60 +1,55 @@
 # import necessary libraries
-from models import create_house, create_rent
 import os
 from flask import (
     Flask,
     render_template,
     jsonify,
     request,
-    redirect)
-from sqlalchemy import create_engine
-from flask_sqlalchemy import SQLAlchemy
-import pandas, sqlite3, csv
+    redirect,
+    session, 
+    flash)
+import pandas as pd
 import numpy as np
-
-from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
-from sqlalchemy import Column, Integer, String, Float
 
 # flask setup
 app = Flask(__name__)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
-
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-# Establish Connection
-engine = create_engine(
-'sqlite:///rent_house.sqlite',
-connect_args={'check_same_thread': False}
-)
-
-conn = engine.connect()
-
-# house_df = pandas.read_csv("static/data/house_filtered.csv")
-# house_df.to_sql("House", conn, if_exists='replace', index=False)
-
-# rent_df = pandas.read_csv("static/data/rent_cleaned.csv")
-# rent_df.to_sql("Rent", conn, if_exists='replace', index=False)
-
-# Rent = create_rent(db)
-# House = create_house(db)
-
-from sqlalchemy.orm import Session
-session = Session(bind=engine)
-
-# Route to render index.html template using data from Mongo
+# Route to render index.html template
 @app.route("/")
 def home():
     # Return template and data
-    return render_template("index.html", title="Loan Helper", )
+    return render_template("index.html", title="Loan Helper")
 @app.route("/about")
 def about():
     # Return template and data
     return render_template("about.html", title="About")
+@app.route("/prediction", methods=['POST', 'GET'])
+def prediction():
+    # Return template and data
+    #TODO take user input from Form as a Post request and typecast it to the proper data structure
+    if request.method == 'POST':
+        try:
+            df = pd.DataFrame({
+
+
+            })
+            gender = int(request.form['gender'])
+            married = int(request.form['married'])
+            dependents = int(request.form['dependents'])
+            education = int(request.form['education'])
+            self_employed = int(request.form['self_employed'])
+            applicant_income = int(request.form['applicant_income'])
+            coapplicant_income = int(request.form['coapplicant_income'])
+            loan_amount = int(request.form['loan_amount'])
+            loan_amount_term = int(request.form['loan_amount_term'])
+            credit_history = int(request.form['credit_history'])
+            property_area = int(request.form['property_area'])
+
+    #TODO add all the data transformation code that formats the data before the algo uses it
+    #TODO run the user's data through the ML algo to generate a prediction
+    #TODO return the result (accepted/denied as a string) from the algo as a string and store the result in a new webpage the user will be redirected to
+
+    return render_template("prediction.html", title="Prediction", decision=decision)
 
 if __name__ == "__main__":
     app.run(debug=True)
