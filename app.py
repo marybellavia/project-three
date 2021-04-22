@@ -48,7 +48,7 @@ def prediction():
     #TODO run the user's data through the ML algo to generate a prediction
     #TODO return the result (accepted/denied as a string) from the algo as a string and store the result in a new webpage the user will be redirected to
 
-    return render_template("prediction.html", title="Prediction", decision=decision)
+    return render_template("prediction.html", title="Prediction")
 
 if __name__ == "__main__":
     app.run(debug=True)
