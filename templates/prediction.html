@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block content %}
@@ -7,25 +6,88 @@
 </div>
 
 <div class="row">
-    <div class="col-md-9 justify-content-center">
-        <div class="card text-light bg-dark mb-3 text-center" style="max-width: 20rem;">
+    <div class="col-md-7 justify-content-center">
+        <div class="card text-light bg-dark mb-3">
             <div class="card-body">
-                <h4 class="card-title">Form</h4>
-                <p class="card-text text-center"><a class="text-success"
-                        href="https://www.linkedin.com/in/mary-bellavia-28311b2a">LINKEDIN</a><br><a class="text-success"
-                        href="https://github.com/marybellavia">GITHUB</a></p>
+                <h4 class="card-title text-center">Loan Prediction Assessment Questions</h4>
+                <form class="form-group" action="/prediction" method="POST">
+                    <label for="gender">What is your gender?</label>
+                    <select class="dropdown-item" id="gender" name="gender">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
+                    <br>
+                    <label for="married">Are you married:</label>
+                    <select class="dropdown-item" id="married" name="married">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <label for="dependents">How many dependents do you have?</label>
+                    <select class="dropdown-item" id="dependents" name="dependents">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3+</option>
+                    </select>
+                    <br>
+                    <label for="education">Did you graduate high school?</label>
+                    <select class="dropdown-item" id="education" name="education">
+                        <option value="1">Graduate</option>
+                        <option value="0">Not Graduate</option>
+                    </select>
+                    <br>
+                    <label for="self_employed">Are you self employed?</label>
+                    <select class="dropdown-item" id="self_employed" name="self_employed">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <label for="applicant_income">What is your current monthly income?</label>
+                    <input class="float-right text-right" type="text" name="applicant_income" value="0">
+                    <br>
+                    <label for="coapplicant_income">If you have a coapplicant, what is their monthly income?</label>
+                    <input class="float-right text-right" type="text" name="coapplicant_income" value="0">
+                    <br>
+                    <label for="loan_amount">What is your desired loan amount?</label>
+                    <input class="float-right text-right" type="text" name="loan_amount" value="0">
+                    <br>
+                    <label for="loan_amount_term">What is your desired loan term?</label>
+                    <select class="dropdown-item" id="loan_amount_term" name="loan_amount_term">
+                        <option value="36">36 Months</option>
+                        <option value="60">60 Months</option>
+                        <option value="84">84 Months</option>
+                        <option value="120">120 Months</option>
+                        <option value="180">180 Months</option>
+                        <option value="240">240 Months</option>
+                        <option value="300">300 Months</option>
+                        <option value="360">360 Months</option>
+                        <option value="480">480 Months</option>
+                    </select>
+                    <br>
+                    <label for="credit_history">Do you have a credit history?</label>
+                    <select class="dropdown-item" id="credit_history" name="credit_history">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <br>
+                    <label for="property">What type of area is the property you are buying?</label>
+                    <select class="dropdown-item" id="property" name="property">
+                        <option value="2">Urban</option>
+                        <option value="1">Semiurban</option>
+                        <option value="0">Rural</option>
+                    </select>
+                    <br>
+                    <button id="submit" type="submit" value="Submit" class="btn btn-light btn-block">Submit</button>
+                </form>
             </div>
         </div>
     </div>
-    <div class="col-md-3 justify-content-center">
-        <div class="card text-light bg-dark mb-3 text-center" style="max-width: 20rem;">
+    <div class="col-md-5 justify-content-center">
+        <div class="card text-light bg-dark mb-3 text-center">
             <div class="card-body">
-                <h4 class="card-title">Garrett DeBlois</h4>
-                <h6 class="card-subtitle text-muted">Quality Assurance Engineer, Data Analyst</h6>
-                <br>
-                <p class="card-text text-center"><a class="text-success"
-                        href="https://www.linkedin.com/in/garrett-deblois/">LINKEDIN</a><br><a class="text-success"
-                        href="https://github.com/GND95">GITHUB</a></p>
+                <h4 class="card-title">Loan Prediction:</h4>
+                <h6 class="card-text">{{ decision }}</h6>
             </div>
         </div>
     </div>
