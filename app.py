@@ -45,9 +45,20 @@ def prediction():
         dependents = int(request.form['dependents'])
         education = int(request.form['education'])
         self_employed = int(request.form['self_employed'])
-        applicant_income = int(ReplaceChars(str(request.form['applicant_income'])))
-        coapplicant_income = int(ReplaceChars(str(request.form['coapplicant_income'])))
-        loan_amount = int(ReplaceChars(str(request.form['loan_amount'])))
+
+        try:
+            applicant_income = int(ReplaceChars(str(request.form['applicant_income'])))
+        except ValueError:
+            return render_template('prediction.html', title="Loan Prediction", decision="Invalid input on Current Yearly Income field.")
+        try:
+            coapplicant_income = int(ReplaceChars(str(request.form['coapplicant_income'])))
+        except ValueError:
+            return render_template('prediction.html', title="Loan Prediction", decision="Invalid input on Coapplicant Yearly Income field.")
+        try:
+            loan_amount = int(ReplaceChars(str(request.form['loan_amount'])))
+        except ValueError:
+            return render_template('prediction.html', title="Loan Prediction", decision="Invalid input on Desired Loan Amount field.")
+
         loan_amount_term = int(request.form['loan_amount_term'])
         credit_history = int(request.form['credit_history'])
         property_area = int(request.form['property_area'])
