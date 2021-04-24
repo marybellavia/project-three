@@ -16,6 +16,15 @@ from joblib import load
 app = Flask(__name__)
 pipeline = load('loan_predictor.joblib')
 
+#form validation function for text fields
+def ReplaceChars(text):
+    chars = ",$"
+    for c in chars:
+        text = text.replace(c, '')
+    if '.' in text:
+        text = int(float(text)) #typecasting to float then to int to drop the decimal places
+    return text
+
 # Route to render index.html template
 @app.route("/")
 def home():
@@ -36,9 +45,20 @@ def prediction():
         dependents = int(request.form['dependents'])
         education = int(request.form['education'])
         self_employed = int(request.form['self_employed'])
-        applicant_income = int(request.form['applicant_income'])
-        coapplicant_income = int(request.form['coapplicant_income'])
-        loan_amount = int(request.form['loan_amount'])
+
+        try:
+            applicant_income = int(ReplaceChars(str(request.form['applicant_income'])))
+        except ValueError:
+            return render_template('prediction.html', title="Loan Prediction", decision="Invalid input on Current Yearly Income field.")
+        try:
+            coapplicant_income = int(ReplaceChars(str(request.form['coapplicant_income'])))
+        except ValueError:
+            return render_template('prediction.html', title="Loan Prediction", decision="Invalid input on Coapplicant Yearly Income field.")
+        try:
+            loan_amount = int(ReplaceChars(str(request.form['loan_amount'])))
+        except ValueError:
+            return render_template('prediction.html', title="Loan Prediction", decision="Invalid input on Desired Loan Amount field.")
+
         loan_amount_term = int(request.form['loan_amount_term'])
         credit_history = int(request.form['credit_history'])
         property_area = int(request.form['property_area'])
@@ -56,6 +76,7 @@ def prediction():
             'Credit_History': [credit_history],
             'Property_Area': [property_area]
         })
+
         pred_cols = list(df.columns.values)
         prediction = pipeline.predict(df[pred_cols])[0]
         if prediction == 'N':
@@ -64,7 +85,6 @@ def prediction():
             decision = 'Approved'
 
         return render_template('prediction.html', title="Loan Prediction", decision=decision)
-    #TODO return the result (accepted/denied as a string) from the algo as a string and store the result in a new webpage the user will be redirected to
 
     decision = "Fill out the form on the left."
     return render_template("prediction.html", title="Loan Prediction", decision=decision)
