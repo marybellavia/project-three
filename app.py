@@ -34,6 +34,10 @@ def home():
 def about():
     # Return template and data
     return render_template("about.html", title="About")
+@app.route("/calculator")
+def calculator():
+    # Return template and data
+    return render_template("calculator.html", title="Calculator")
 @app.route("/prediction", methods=['POST', 'GET'])
 def prediction():
     # Return template and data
