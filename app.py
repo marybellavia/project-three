@@ -10,9 +10,11 @@ from flask import (
     flash)
 import pandas as pd
 import numpy as np
+from joblib import load
 
 # flask setup
 app = Flask(__name__)
+pipeline = load('loan_predictor.joblib')
 
 # Route to render index.html template
 @app.route("/")
@@ -43,23 +45,29 @@ def prediction():
 
         #put the variables into a pandas dataframe
         df = pd.DataFrame({
-            'Gender': gender,
-            'Married': married,
-            'Dependents': dependents,
-            'Self_Employed': self_employed,
-            'ApplicantIncome': applicant_income,
-            'CoapplicantIncome': coapplicant_income,
-            'LoanAmount': loan_amount,
-            'Loan_Amount_Term': loan_amount_term,
-            'Credit_History': credit_history,
-            'Property_Area': property_area
+            'Loan_ID': [100],
+            'Gender': [gender],
+            'Married': [married],
+            'Dependents': [dependents],
+            'Self_Employed': [self_employed],
+            'ApplicantIncome': [applicant_income],
+            'CoapplicantIncome': [coapplicant_income],
+            'LoanAmount': [loan_amount],
+            'Loan_Amount_Term': [loan_amount_term],
+            'Credit_History': [credit_history],
+            'Property_Area': [property_area]
         })
+        pred_cols = list(df.columns.values)
+        decision = pd.Series(pipeline.predict(df[pred_cols]))
+
+        return render_template('predictions.html', decision=decision)
 
     #TODO add all the data transformation code that formats the data before the algo uses it
     #TODO run the user's data through the ML algo to generate a prediction
     #TODO return the result (accepted/denied as a string) from the algo as a string and store the result in a new webpage the user will be redirected to
 
-    return render_template("prediction.html", title="Loan Prediction")
+    decision = "Fill out the form on the left."
+    return render_template("prediction.html", title="Loan Prediction", decision=decision)
 @app.route("/infographics")
 def infographics():
     # Return template and data
