@@ -59,7 +59,11 @@ def prediction():
     #TODO run the user's data through the ML algo to generate a prediction
     #TODO return the result (accepted/denied as a string) from the algo as a string and store the result in a new webpage the user will be redirected to
 
-    return render_template("prediction.html", title="Prediction")
+    return render_template("prediction.html", title="Loan Prediction")
+@app.route("/infographics")
+def infographics():
+    # Return template and data
+    return render_template("infographics.html", title="Loan Infographics")
 
 if __name__ == "__main__":
     app.run(debug=True)
