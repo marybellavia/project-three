@@ -56,13 +56,14 @@ def prediction():
             'Credit_History': [credit_history],
             'Property_Area': [property_area]
         })
-        pred_cols = list(df.columns.values)[:-1]
-        decision = pd.Series(pipeline.predict(df[pred_cols]))
+        pred_cols = list(df.columns.values)
+        prediction = pipeline.predict(df[pred_cols])[0]
+        if prediction == 'N':
+            decision = 'Denied'
+        if prediction == 'Y':
+            decision = 'Approved'
 
-        return render_template('predictions.html', decision=decision)
-
-    #TODO add all the data transformation code that formats the data before the algo uses it
-    #TODO run the user's data through the ML algo to generate a prediction
+        return render_template('prediction.html', title="Loan Prediction", decision=decision)
     #TODO return the result (accepted/denied as a string) from the algo as a string and store the result in a new webpage the user will be redirected to
 
     decision = "Fill out the form on the left."
