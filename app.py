@@ -45,7 +45,6 @@ def prediction():
 
         #put the variables into a pandas dataframe
         df = pd.DataFrame({
-            'Loan_ID': [100],
             'Gender': [gender],
             'Married': [married],
             'Dependents': [dependents],
@@ -57,7 +56,7 @@ def prediction():
             'Credit_History': [credit_history],
             'Property_Area': [property_area]
         })
-        pred_cols = list(df.columns.values)
+        pred_cols = list(df.columns.values)[:-1]
         decision = pd.Series(pipeline.predict(df[pred_cols]))
 
         return render_template('predictions.html', decision=decision)
