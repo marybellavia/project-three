@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="../static/css/solar.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- D3 CDN -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!--Plotly JS-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <!-- Each team member's javascript files -->
+        <script src="../static/js/bellavia_calculator.js"></script>
 
 </head>
 
@@ -58,6 +65,16 @@
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="/infographics">Loan Infographics</a>
+                </li>
+                {% endif %}
+                
+                {% if title == 'Payment Calculator' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/calculator"><span class="sr-only">(current)</span>Payment Calculator</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/calculator">Payment Calculator</a>
                 </li>
                 {% endif %}
         </div>

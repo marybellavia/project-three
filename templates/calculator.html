@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron bg-info" style="text-align: center">
+    <h1 class="text-light">{{ title }}</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6 justify-content-center">
+        <div class="card border-info text-light bg-dark mb-3">
+            <div class="card-body">
+                <h4 class="card-title text-center">Monthly Loan Payment Calculator</h4>
+                <label>Home Price ($): </label>
+                <input id="home_price" class="float-right text-right" type="text" onchange="calculate();">
+                <br>
+                <label>Down Payment ($): </label>
+                <input id="down_payment" class="float-right text-right" type="text" onchange="calculate();">
+                <br>
+                <label>Mortgage Interest Rate (%): </label>
+                <input id="apr" class="float-right text-right" type="text" onchange="calculate();">
+                <br>
+                <label>Repayment period (years): </label>
+                <select class="dropdown-item" id="years" onchange="calculate();">
+                    <option value="3">36 Months (3 Years)</option>
+                    <option value="5">60 Months (5 Years)</option>
+                    <option value="7">84 Months (7 Years)</option>
+                    <option value="10">120 Months (10 Years)</option>
+                    <option value="15">180 Months (15 Years)</option>
+                    <option value="20">240 Months (20 Years)</option>
+                    <option value="25">300 Months (25 Years)</option>
+                    <option value="30">360 Months (30 Years)</option>
+                    <option value="40">480 Months (40 Years)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 justify-content-center">
+        <div class="card border-info text-light bg-dark mb-3">
+            <div class="card-body">
+                <h4 class="card-title text-center">Approximate Payments</h4>
+                <span>Loan Amount: </span>
+                $<span class="text-success output" id="loanamount"></span>
+                <br>
+                <span>Total interest: </span>
+                $<span class="text-success output" id="totalinterest"></span>
+                <br>
+                <span>Total Amount Paid: </span>
+                $<span class="text-success output" id="total"></span>
+                <br>
+                <br>
+                <span>Total Monthly Payment: </span>
+                $<span class="text-success output" id="payment"></span>
+                <br>
+                <span>Monthly Principal & Interest Payment: </span>
+                $<span class="text-success output" id="printerest"></span>
+                <br>
+                <span>Monthly Taxes & Other Fees Payment: </span>
+                $<span class="text-success output" id="taxesfee"></span>
+                <br>
+                <span>Monthly Home Insurance Payment: </span>
+                $<span class="text-success output" id="homeinsurance"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 justify-content-center">
+        <div class="card border-info text-light bg-dark mb-3">
+            <div class="card-body">
+                <h4 id="plotly" class=" plotly card-title text-center">GRAPH!</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

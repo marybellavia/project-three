@@ -92,6 +92,12 @@ def prediction():
 def infographics():
     # Return template and data
     return render_template("infographics.html", title="Loan Infographics")
+@app.route("/calculator")
+def calculator():
+    # Return template and data
+    return render_template("calculator.html", title="Payment Calculator")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
