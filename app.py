@@ -14,7 +14,7 @@ from joblib import load
 
 # flask setup
 app = Flask(__name__)
-pipeline = load('loan_predictor.joblib')
+pipeline = load('logistic.joblib')
 
 #form validation function for text fields
 def ReplaceChars(text):
