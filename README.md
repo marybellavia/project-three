@@ -19,10 +19,10 @@
 
 ## Images
 ### Bubble Chart
-![Bubble Chart](static/images/Screen.PN)
+![Bubble Chart](static/images/Screen.PNG)
 ### Line Graph
-![Bubble Chart](static/images/Screen1.PN)
+![Bubble Chart](static/images/Screen1.PNG)
 ### House Heatmap
-![Bubble Chart](static/images/Screen2.PN)
+![Bubble Chart](static/images/Screen2.PNG)
 ### Rent Heatmap
-![Bubble Chart](static/images/Screen3.PN)
+![Bubble Chart](static/images/Screen3.PNG)
