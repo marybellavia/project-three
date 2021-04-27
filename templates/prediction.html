@@ -91,6 +91,8 @@
                 <button type="button" class="btn btn-success btn-lg btn-block">{{ decision }}</button>
                 {% elif decision == 'Denied' %}
                 <button type="button" class="btn btn-warning btn-lg btn-block">{{ decision }}</button>
+                {% else %}
+                <h6 class="card-text">{{ decision }}</h6>
                 {% endif %}
             </div>
         </div>
