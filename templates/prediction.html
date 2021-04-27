@@ -87,7 +87,13 @@
         <div class="card text-light bg-dark mb-3 text-center">
             <div class="card-body">
                 <h4 class="card-title">Loan Prediction:</h4>
+                {% if decision == 'Approved' %}
+                <button type="button" class="btn btn-success btn-lg btn-block">{{ decision }}</button>
+                {% elif decision == 'Denied' %}
+                <button type="button" class="btn btn-warning btn-lg btn-block">{{ decision }}</button>
+                {% else %}
                 <h6 class="card-text">{{ decision }}</h6>
+                {% endif %}
             </div>
         </div>
     </div>

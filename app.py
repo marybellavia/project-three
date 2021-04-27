@@ -18,11 +18,14 @@ pipeline = load('loan_predictor.joblib')
 
 #form validation function for text fields
 def ReplaceChars(text):
-    chars = ",$"
-    for c in chars:
-        text = text.replace(c, '')
-    if '.' in text:
-        text = int(float(text)) #typecasting to float then to int to drop the decimal places
+    if text is "" or text is None:
+        text = 0 #if text box is empty default the value to 0
+    else:
+        chars = ",$" #removing common monetary and numeric formatting
+        for c in chars:
+            text = text.replace(c, '')
+        if '.' in text:
+            text = int(float(text)) #typecasting to float then to int to drop the decimal places
     return text
 
 # Route to render index.html template
@@ -92,6 +95,12 @@ def prediction():
 def infographics():
     # Return template and data
     return render_template("infographics.html", title="Loan Infographics")
+@app.route("/calculator")
+def calculator():
+    # Return template and data
+    return render_template("calculator.html", title="Payment Calculator")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
