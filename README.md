@@ -18,11 +18,11 @@
 [Tableau](https://public.tableau.com/profile/eric.evans4196#!/vizhome/project3_16190583513880/LoanFactorsDB2)
 
 ## Images
-### Bubble Chart
-![Bubble Chart](static/images/Screen.PNG)
-### Line Graph
-![Bubble Chart](static/images/Screen1.PNG)
-### House Heatmap
-![Bubble Chart](static/images/Screen2.PNG)
-### Rent Heatmap
-![Bubble Chart](static/images/Screen3.PNG)
+### Landing Page
+![Landing Page](static/images/Screen.PNG)
+### Loan Prediction Page
+![Loan Prediction Page](static/images/Screen1.PNG)
+### Loan Infographics Page
+![Loan Infographics Page](static/images/Screen2.PNG)
+### About Page
+![About Page](static/images/Screen3.PNG)
