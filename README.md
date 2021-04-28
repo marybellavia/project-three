@@ -32,5 +32,5 @@ Visualizations are powered by and hosted on [Tableau](https://public.tableau.com
 ![Loan Infographics Page](static/images/Screen2.PNG)
 ### About Page
 ![About Page](static/images/Screen3.PNG)
-### Payment Calculator Page (NEED IMAGE)
+### Payment Calculator Page
 ![Payment Calculator Page](static/images/Screen4.PNG)
