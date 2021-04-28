@@ -6,27 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ title }}</title>
+    
+    <!-- Our style sheets -->
     <link rel="stylesheet" href="../static/css/solar.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <!-- D3 CDN -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <!--Plotly JS-->
+    <!-- Plotly JS -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <!-- Each team member's javascript files -->
-        <script src="../static/js/bellavia_calculator.js"></script>
+    <!-- Each team member's javascript files -->
+    <script src="../static/js/bellavia_calculator.js"></script>
 
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Loan Helper</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 {% if title == 'Loan Helper' %}
                 <li class="nav-item active">
