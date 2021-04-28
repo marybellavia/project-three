@@ -43,12 +43,6 @@ def prediction():
 
     #take user input from Form as a Post request and typecast it to the proper data structure
     if request.method == 'POST':
-        gender = int(request.form['gender'])
-        married = int(request.form['married'])
-        dependents = int(request.form['dependents'])
-        education = int(request.form['education'])
-        self_employed = int(request.form['self_employed'])
-
         try:
             applicant_income = int(ReplaceChars(str(request.form['applicant_income'])))
         except ValueError:
@@ -61,30 +55,74 @@ def prediction():
             loan_amount = int(ReplaceChars(str(request.form['loan_amount'])))
         except ValueError:
             return render_template('prediction.html', title="Loan Prediction", decision="Invalid input on Desired Loan Amount field.")
-
+        
         loan_amount_term = int(request.form['loan_amount_term'])
         credit_history = int(request.form['credit_history'])
+        gender = int(request.form['gender'])
+        married = int(request.form['married'])
+        dependents = int(request.form['dependents'])
+        if dependents == 0:
+            dependents_zero = 1
+            dependents_one = 0
+            dependents_two = 0
+            dependents_three = 0 
+        elif dependents == 1:
+            dependents_zero = 0
+            dependents_one = 1
+            dependents_two = 0
+            dependents_three = 0 
+        elif dependents == 2:
+            dependents_zero = 0
+            dependents_one = 0
+            dependents_two = 1
+            dependents_three = 0 
+        else:
+            dependents_zero = 0
+            dependents_one = 0
+            dependents_two = 0
+            dependents_three = 1 
+        education = int(request.form['education'])
+        self_employed = int(request.form['self_employed'])
         property_area = int(request.form['property_area'])
+        if property_area == 0:
+            rural = 1
+            semiurban = 0
+            urban = 0 
+        elif property_area == 1:
+            rural = 0
+            semiurban = 1
+            urban = 0
+        else:
+            rural = 0
+            semiurban = 0
+            urban = 1
+ 
 
         #put the variables into a pandas dataframe
         df = pd.DataFrame({
-            'Gender': [gender],
-            'Married': [married],
-            'Dependents': [dependents],
-            'Self_Employed': [self_employed],
             'ApplicantIncome': [applicant_income],
             'CoapplicantIncome': [coapplicant_income],
             'LoanAmount': [loan_amount],
             'Loan_Amount_Term': [loan_amount_term],
             'Credit_History': [credit_history],
-            'Property_Area': [property_area]
+            'Gender_Male': [gender],
+            'Married_Yes': [married],
+            'Dependents_0': [dependents_zero],
+            'Dependents_1': [dependents_one],
+            'Dependents_2': [dependents_two],
+            'Dependents_3+': [dependents_three],
+            'Education_Graduate': [education],
+            'Self_Employed_Yes': [self_employed],
+            'Property_Area_Rural': [rural],
+            'Property_Area_Semiurban': [semiurban],
+            'Property_Area_Urban': [urban]
         })
 
         pred_cols = list(df.columns.values)
         prediction = pipeline.predict(df[pred_cols])[0]
-        if prediction == 'N':
+        if prediction == 0:
             decision = 'Denied'
-        if prediction == 'Y':
+        if prediction == 1:
             decision = 'Approved'
 
         return render_template('prediction.html', title="Loan Prediction", decision=decision)

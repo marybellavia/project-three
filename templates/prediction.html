@@ -13,8 +13,8 @@
                 <form class="form-group" action="/prediction" method="POST">
                     <label for="gender">What is your gender?</label>
                     <select class="dropdown-item" id="gender" name="gender">
-                        <option value="0">Male</option>
-                        <option value="1">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
                     </select>
                     <br>
                     <label for="married">Are you married?</label>
@@ -84,18 +84,28 @@
         </div>
     </div>
     <div class="col-md-5 justify-content-center">
+        {% if decision == 'Approved' %}
+        <div class="card text-light bg-success mb-3 text-center">
+            <div class="card-body">
+                <h4 class="card-title">Loan Prediction:</h4>
+                <h4 class="card-body">{{ decision }}</h4>
+            </div>
+        </div>
+        {% elif decision == 'Denied' %}
+        <div class="card text-light bg-warning mb-3 text-center">
+            <div class="card-body">
+                <h4 class="card-title">Loan Prediction:</h4>
+                <h4 class="card-body">{{ decision }}</h4>
+            </div>
+        </div>
+        {% else %}
         <div class="card text-light bg-dark mb-3 text-center">
             <div class="card-body">
                 <h4 class="card-title">Loan Prediction:</h4>
-                {% if decision == 'Approved' %}
-                <button type="button" class="btn btn-success btn-lg btn-block">{{ decision }}</button>
-                {% elif decision == 'Denied' %}
-                <button type="button" class="btn btn-warning btn-lg btn-block">{{ decision }}</button>
-                {% else %}
-                <h6 class="card-text">{{ decision }}</h6>
-                {% endif %}
+                <h4 class="card-body">{{ decision }}</h4>
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 
